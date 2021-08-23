@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 面向对象有三大特性：封装、继承、多态 -->
+    <!-- 继承1、减少代码重复 2、多态前提（鸭子类型） -->
+    <script>
+      class Person {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+        running() {
+          console.log("running");
+        }
+      }
+    //   class Student {
+    //     constructor(name, age, sno) {
+    //       this.name = name;
+    //       this.age = age;
+    //       this.sno = sno;
+    //     }
+    //     running() {
+    //       console.log("running");
+    //     }
+    //   }
+    //   class Teacher {
+    //     constructor(name, age, title) {
+    //       this.name = name;
+    //       this.age = age;
+    //       this.title = title;
+    //     }
+    //     running() {
+    //       console.log("running");
+    //     }
+    //   }
+        class Student extends Person{
+            constructor(name,age,sno){
+                super(name,age) //必须使用super 初始化父类
+                this.sno=sno
+            }
+        }
+        const stu=new Student('why',12,110)
+        console.log(stu.name,stu.age,stu.sno);
+        stu.running()
+    </script>
+  </body>
+</html>
