@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- 引入依赖 -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      // jsx语法
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            //1.在{}中可以正常显示的内容
+            name: "why",
+            age: 18,
+            names: ["abc", "cab", "22"],
+            //2.在{}中不显示 (忽略)
+            test1: null,
+            test2: undefined,
+            test3: String(true),
+            test4: false,
+            flag: true,
+            //3.对象不能作为jsx的子类
+            firend: {
+              name: "ss",
+              age: 40,
+            },
+          };
+        }
+        render() {
+          return (
+            <div>
+              <h2>{this.state.name}</h2>
+              <h2>{this.state.age}</h2>
+              <h2>{this.state.names}</h2>
+              <h2>{this.state.test1 + ""}</h2>
+              <h2>{this.state.test2}</h2>
+              <h2>{this.state.test3}</h2>
+              <h2>{this.state.test4.toString()}</h2>
+              <h2>{this.state.flag ? "你好啊" : null}</h2>
+              {/* <h2>{this.state.firend}</h2>
+               *对象不能作为jsx的子类
+               */}
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
