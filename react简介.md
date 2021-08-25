@@ -1,3 +1,7 @@
 1采用组件化模式，声明式编码，提高开发效率及组件式复用率
 2在ReactNative中可以使用React语法进行移动端开发
 3使用虚拟dom+优秀的Diffing算法啊，尽量减少与真实dom交互
+jsx语法
+1当变量是number string array类型 可以直接显示
+2null undefind boolean ,需要显示成字符串 转换方式很多比如tostring 和空字符串拼接，string变量等方式
+3对象类型不能作为子元素

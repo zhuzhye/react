@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- 引入依赖 -->
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+      // jsx语法
+      class App extends React.Component {
+        constructor() {
+          super();
+          this.state = {
+            firstname: "hobby",
+            lastname: "byant",
+            islogin: true,
+          };
+        }
+        render() {
+          const { firstname, lastname, islogin } = this.state;
+          return (
+            <div>
+              {/*1.运算符表达式*/}
+              <h2>{firstname + "" + lastname}</h2>
+              <h2>{20 * 50}</h2>
+              {/*三元表达式*/}
+              <h2>{islogin ? "欢迎回来" : "谢谢"}</h2>
+              {/*函数调用*/}
+              <h2>{this.getFullName()}</h2>
+            </div>
+          );
+        }
+        getFullName(){
+            return this.state.firstname+''+this.state.lastname 
+        }
+      }
+      ReactDOM.render(<App />, document.getElementById("app"));
+    </script>
+  </body>
+</html>
