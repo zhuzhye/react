@@ -24,29 +24,34 @@
         constructor() {
           super();
           this.state = {
-            title: "标题",
-            imgUrl: "./1.jpg",
-            link: "http://www.baidu.com",
-            active: "true",
-            size:'50px'
+              message:'你好啊',
+              current:100,
           };
+          this.btnclick=this.btnclick.bind(this)
         }
         render() {
-          const { title, imgUrl, link, active ,size} = this.state;
           return (
             <div>
-              {/*绑定普通函数*/}
-              <h2 title={title}>我是标题</h2>
-              <img src={imgUrl} alt="" />
-              <a href={link}>百度一下啊</a>
-              {/*绑定class*/}
-              <div className="box title">我是div</div>
-              <div className={"box title " + (active ? "active" : "")}>
-                我是div
+                {/*方案一 bind绑定this （显示绑定）*/}
+              <button onClick={this.btnclick}>按钮</button>
+              <button onClick={this.btnclick.bind(this)}>按钮</button>
+              {/*方案二：定义函数时，使用箭头函数*/}
+              <button onClick={this.increatement}>+1</button>
+              {/*方案三 直接传入一个箭头函数*/}
+              <button onClick={()=>{this.decreatement()}}>-1</button>
               </div>
-              <div style={{color:'red',fontSize:size}}>style 属性</div>
-            </div>
           );
+        }
+        btnclick() {
+          console.log( this.state.message);
+         
+        }
+        // 箭头函数永远不绑定this
+        increatement=()=>{
+          console.log(this.state.current);
+        }
+        decreatement(){
+          console.log(this.state.current);
         }
       }
       ReactDOM.render(<App />, document.getElementById("app"));

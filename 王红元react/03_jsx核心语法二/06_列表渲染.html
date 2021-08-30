@@ -24,29 +24,37 @@
         constructor() {
           super();
           this.state = {
-            title: "标题",
-            imgUrl: "./1.jpg",
-            link: "http://www.baidu.com",
-            active: "true",
-            size:'50px'
+            name: ["abc", "cba", "daga", "wwww"],
+            number: [110, 120, 1, 50, 555, 12, 23, 54],
           };
         }
         render() {
-          const { title, imgUrl, link, active ,size} = this.state;
           return (
             <div>
-              {/*绑定普通函数*/}
-              <h2 title={title}>我是标题</h2>
-              <img src={imgUrl} alt="" />
-              <a href={link}>百度一下啊</a>
-              {/*绑定class*/}
-              <div className="box title">我是div</div>
-              <div className={"box title " + (active ? "active" : "")}>
-                我是div
-              </div>
-              <div style={{color:'red',fontSize:size}}>style 属性</div>
+              <ul>
+                {this.state.name.map((item) => {
+                  return <li>{item}</li>;
+                })}
+              </ul>
+              <h2>数字列表</h2>
+              <ul>
+                {this.state.number
+                  .filter((item) => item > 50)
+                  .map((mapitem) => (
+                    <li>{mapitem}</li>
+                  ))}
+              </ul>
+              <h2>数组截取</h2>
+              <ul>
+                {this.state.number.slice(0, 1).map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
             </div>
           );
+        }
+        loginclick() {
+          this.setState({});
         }
       }
       ReactDOM.render(<App />, document.getElementById("app"));

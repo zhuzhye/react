@@ -24,29 +24,33 @@
         constructor() {
           super();
           this.state = {
-            title: "标题",
-            imgUrl: "./1.jpg",
-            link: "http://www.baidu.com",
-            active: "true",
-            size:'50px'
+            movies: ["大话西游", "海王", "盗梦空间"],
           };
         }
         render() {
-          const { title, imgUrl, link, active ,size} = this.state;
           return (
             <div>
-              {/*绑定普通函数*/}
-              <h2 title={title}>我是标题</h2>
-              <img src={imgUrl} alt="" />
-              <a href={link}>百度一下啊</a>
-              {/*绑定class*/}
-              <div className="box title">我是div</div>
-              <div className={"box title " + (active ? "active" : "")}>
-                我是div
-              </div>
-              <div style={{color:'red',fontSize:size}}>style 属性</div>
+              <button
+                onClick={() => {
+                  this.btnclick();
+                }}
+              >
+                按钮
+              </button>
+              <ul>
+                {this.state.movies.map((item) => {
+                  return <li onClick={(e)=>{this.liclick(e,item)}}>{item}</li>;
+                })}
+              </ul>
             </div>
           );
+        }
+        btnclick(event) {
+          console.log("点击", event);
+        }
+        liclick(event,name){
+            console.log(event);
+            console.log(name);
         }
       }
       ReactDOM.render(<App />, document.getElementById("app"));

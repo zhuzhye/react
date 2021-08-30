@@ -24,29 +24,40 @@
         constructor() {
           super();
           this.state = {
-            title: "标题",
-            imgUrl: "./1.jpg",
-            link: "http://www.baidu.com",
-            active: "true",
-            size:'50px'
+            islogin: false,
           };
         }
         render() {
-          const { title, imgUrl, link, active ,size} = this.state;
+          {
+            /*逻辑判断非常多*/
+          }
+          let welcome = null;
+          if (this.state.islogin) {
+            welcome = <h2>欢迎回来</h2>;
+          } else {
+            welcome = <h2>请先登录</h2>;
+          }
           return (
             <div>
-              {/*绑定普通函数*/}
-              <h2 title={title}>我是标题</h2>
-              <img src={imgUrl} alt="" />
-              <a href={link}>百度一下啊</a>
-              {/*绑定class*/}
-              <div className="box title">我是div</div>
-              <div className={"box title " + (active ? "active" : "")}>
-                我是div
-              </div>
-              <div style={{color:'red',fontSize:size}}>style 属性</div>
+              {welcome}
+              <button
+                onClick={(e) => {
+                  this.loginclick(e);
+                }}
+              >
+                {this.state.islogin ? "退出" : "登录"}
+              </button>
+              {/*三元运算符*/}
+              <h2>{this.state.islogin ? "你好啊" : null}</h2>
+              {/*逻辑与：一个体哦阿健不成立，后面的条件都不判断了*/}
+              <h2>{this.state.islogin && "你好啊，luo'ji'yu"}</h2>
             </div>
           );
+        }
+        loginclick() {
+          this.setState({
+            islogin: !this.state.islogin,
+          });
         }
       }
       ReactDOM.render(<App />, document.getElementById("app"));
